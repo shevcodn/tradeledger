@@ -9,6 +9,6 @@ jobs:
           fetch-depth: 0
       - name: Push to GitLab
         run: |
-          git remote add gitlab https://shevcodn:${{ secrets.GITLAB_TOKEN }}@gitlab.com/shevcodn/projects.git
+          git remote add gitlab https://shevcodn:${{ secrets.GITLAB_TOKEN }}@gitlab.com/shevcodn/tradeledger.git
           git push gitlab --all --force
           git push gitlab --tags --force
