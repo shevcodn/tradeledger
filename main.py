@@ -30,7 +30,7 @@ def save_data():
     history.save_to_json(DATA_FILE)
 
 def add_transaction():
-    console.print("\n[bold cyan]Add Transaction[/bold cyan]")
+    console.print("\n[bold green]Add Transaction[/bold green]")
     ticker = input("Ticker (e.g. AAPL): ").strip().upper()
     type_ = input("Type (buy/sell): ").strip().lower()
     price = float(input("Price: $"))
@@ -59,7 +59,7 @@ def view_portfolio():
     show_summary(total_invested, total_value, total_pnl, len(transactions))
 
 def search_menu():
-    console.print("\n[bold cyan]Search[/bold cyan]")
+    console.print("\n[bold green]Search[/bold green]")
     choice = input("Search by (ticker/date): ").strip().lower()
     if choice == "ticker":
         ticker = input("Ticker: ").strip().upper()
@@ -103,7 +103,7 @@ def top5_menu():
     if not top5:
         console.print("[red]No trades yet![/red]")
         return
-    console.print("\n[bold yellow]Top 5 Trades by P&L[/bold yellow]")
+    console.print("\n[bold green]Top 5 Trades by P&L[/bold green]")
     for t, pnl in top5:
         color = "green" if pnl >= 0 else "red"
         console.print(f"  {t.ticker} | {t.quantity} shares | [{color}]${pnl:.2f}[/{color}]")
@@ -136,7 +136,7 @@ def menu():
         elif choice == "6":
             top5_menu()
         elif choice == "0":
-            console.print("[yellow]Bye![/yellow]")
+            console.print("[green]Bye![/green]")
             break
         else:
             console.print("[red]Invalid choice![/red]")

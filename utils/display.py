@@ -6,7 +6,7 @@ from rich import box
 console = Console()
 
 def show_transactions(transactions):
-    table = Table(title="Transaction History", box=box.SIMPLE)
+    table = Table(title="Transaction History", box=box.MINIMAL)
     table.add_column("Date", style="cyan")
     table.add_column("Ticker", style="bold")
     table.add_column("Type", style="green")
@@ -24,7 +24,7 @@ def show_transactions(transactions):
     console.print(table)
 
 def show_pnl(summary):
-    table = Table(title="Portfolio P&L", box=box.ROUNDED)
+    table = Table(title="Portfolio P&L", box=box.MINIMAL)
     table.add_column("Ticker", style="bold")
     table.add_column("Qty")
     table.add_column("Avg Buy")
