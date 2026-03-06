@@ -7,7 +7,7 @@ console = Console()
 
 def show_transactions(transactions):
     table = Table(title="Transaction History", box=box.MINIMAL)
-    table.add_column("Date", style="cyan")
+    table.add_column("Date", style="green")
     table.add_column("Ticker", style="bold")
     table.add_column("Type", style="green")
     table.add_column("Qty")
