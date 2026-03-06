@@ -20,6 +20,20 @@
 
 ---
 
+## Projects
+
+| # | Project | Stack | Try it | Status |
+|---|---------|-------|--------|--------|
+| 01 | [Stock Portfolio Tracker](https://github.com/shevcodn/projects) | Python · Alpha Vantage API · LinkedList · HashMap | [▶ Live demo](https://shevcodn.dev/#project-01) | ✅ Done |
+| 02 | [TradeLedger](https://github.com/shevcodn/tradeledger) | Python · Rich · Alpha Vantage · LinkedList · Heap | [▶ Live demo](https://shevcodn.dev/#project-02) | ✅ Done |
+| 03 | MarketPulse | WebSockets · Redis · React | — | 🔜 p800 |
+| 04 | DeployKit | Docker · GitHub Actions · Railway | — | 🔜 p900 |
+| 05 | AuthVault | JWT · OAuth · Railway deploy | — | 🔜 p960 |
+| 06 | WealthTrack | FastAPI · PostgreSQL · Docker | — | 🔜 p980 |
+| 07 | PortfolioOS | TBD | — | 🔜 p1000 |
+
+---
+
 ## Features
 
 | Option | Description |
@@ -106,6 +120,7 @@ tradeledger/
 
 *Project 02 of 7 · Built during p1→p1000 Python curriculum · Toronto 2026*
 
-[![Portfolio](https://img.shields.io/badge/All_Projects-shevcodn.dev-00ff88?style=flat-square&logo=vercel&logoColor=black)](https://shevcodn.dev)
+[![Website](https://img.shields.io/badge/shevcodn.dev-00ff88?style=flat-square&logo=vercel&logoColor=black)](https://shevcodn.dev)
+[![All Projects](https://img.shields.io/badge/All_Projects-00ff88?style=flat-square&logo=github&logoColor=black)](https://github.com/shevcodn/projects)
 
 </div>

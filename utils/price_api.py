@@ -1,14 +1,24 @@
 import os
 import time
 import json
-import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("ALPHA_VANTAGE_KEY")
 CACHE_TTL = 3900
 SHARED_CACHE_PATH = os.getenv("SHARED_CACHE_PATH", "../shared/price_cache.json")
+
+_redis = None
+
+def _get_redis():
+    global _redis
+    if _redis is None:
+        url = os.getenv("UPSTASH_REDIS_URL")
+        token = os.getenv("UPSTASH_REDIS_TOKEN")
+        if url and token:
+            from upstash_redis import Redis
+            _redis = Redis(url=f"https://{url}", token=token)
+    return _redis
 
 def _load_cache():
     try:
@@ -17,30 +27,21 @@ def _load_cache():
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
-def _save_cache(cache):
-    try:
-        with open(SHARED_CACHE_PATH, 'w') as f:
-            json.dump(cache, f, indent=2)
-    except OSError:
-        pass
-
 def get_price(ticker):
+    r = _get_redis()
+    if r:
+        try:
+            val = r.get(f"price:{ticker}")
+            if val is not None:
+                return float(val)
+        except Exception:
+            pass
+        return None
     cache = _load_cache()
     now = time.time()
     if ticker in cache and now - cache[ticker]["time"] < CACHE_TTL:
         return cache[ticker]["price"]
-    url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={ticker}&apikey={API_KEY}"
-    try:
-        response = requests.get(url, timeout=10)
-        data = response.json()
-        price = float(data["Global Quote"]["05. price"])
-        cache[ticker] = {"price": price, "time": now}
-        _save_cache(cache)
-        return price
-    except (requests.RequestException, KeyError, ValueError):
-        if ticker in cache:
-            return cache[ticker]["price"]
-        return None
+    return None
 
 def get_prices(tickers):
     return {ticker: get_price(ticker) for ticker in tickers}
