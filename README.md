@@ -12,20 +12,12 @@
 
 ---
 
-# TradeLedger
-
-> Advanced CLI trade journal built with **Rich UI**. Track any ticker, log buy/sell trades, monitor P&L, set price alerts, and rank top trades — all from the terminal.
-
-**[▶ Try it live → shevcodn.dev/#project-02](https://shevcodn.dev/#project-02)**
-
----
-
 ## Projects
 
 | # | Project | Stack | Try it | Status |
 |---|---------|-------|--------|--------|
-| 01 | [Stock Portfolio Tracker](https://github.com/shevcodn/projects) | Python · Alpha Vantage API · LinkedList · HashMap | [▶ Live demo](https://shevcodn.dev/#project-01) | ✅ Done |
-| 02 | [TradeLedger](https://github.com/shevcodn/tradeledger) | Python · Rich · Alpha Vantage · LinkedList · Heap | [▶ Live demo](https://shevcodn.dev/#project-02) | ✅ Done |
+| 01 | [Stock Portfolio Tracker](https://github.com/shevcodn/projects) | Python · Alpha Vantage API · LinkedList · HashMap | [▶ Live](https://shevcodn.dev/#project-01) | ✅ Done |
+| 02 | [TradeLedger](https://github.com/shevcodn/tradeledger) | Python · Rich · Alpha Vantage · LinkedList · Heap | [▶ Live](https://shevcodn.dev/#project-02) | ✅ Done |
 | 03 | MarketPulse | WebSockets · Redis · React | — | 🔜 p800 |
 | 04 | DeployKit | Docker · GitHub Actions · Railway | — | 🔜 p900 |
 | 05 | AuthVault | JWT · OAuth · Railway deploy | — | 🔜 p960 |
@@ -34,85 +26,51 @@
 
 ---
 
-## Features
+## Project-02: TradeLedger
 
-| Option | Description |
-|--------|-------------|
-| `1` Add Transaction | Log buy/sell with date, price, quantity |
-| `2` View Portfolio | Rich table: avg price · current price · P&L % |
-| `3` Search | Binary search by ticker or date |
-| `4` ASCII Chart | Price chart of transaction history |
-| `5` Check Alerts | Sliding window price drop detection |
-| `6` Top 5 Trades | Best trades ranked by P&L via Heap |
-
----
-
-## Data Structures Used
-
-| Structure | Usage | Complexity |
-|-----------|-------|------------|
-| **LinkedList** | Transaction history (newest → oldest) | O(1) insert |
-| **HashMap** | Holdings lookup by ticker | O(1) lookup |
-| **Heap** | Top-5 trades by P&L | O(n log k) |
-| **Binary Search** | Search by ticker / date | O(log n) |
-
----
-
-## Stack
+> **Python CLI app** — advanced trade journal with Rich UI. Track any ticker, log buy/sell, monitor P&L, set price alerts, rank top trades by profit.
 
 ```
-Python 3.12
-Rich          — tables, colors, panels, progress bars
-Alpha Vantage — real-time stock prices (shared cache)
-JSON          — persistence between sessions
+Stack:   Python · Rich · Alpha Vantage API · LinkedList · Heap · Binary Search
+Balance: $25,000 virtual
+Tickers: Any ticker (user inputs)
+Cache:   Shared with Project-01 (TTL 65 min, one API key)
 ```
 
----
+### Features
 
-## Quick Start
+| Command | Description |
+|---------|-------------|
+| `buy TICKER QTY` | Buy at real-time price |
+| `sell TICKER QTY` | Sell with P&L calculation |
+| `portfolio` | Rich table: avg price · current price · P&L % |
+| `search TICKER` | Binary search in transaction history |
+| `top N` | Top N trades by profit via Heap |
+| `alert TICKER PRICE` | Set price drop alert |
+| `history` | Full transaction log via LinkedList |
+
+### Data Structures
+
+- **LinkedList** — transaction history, newest → oldest
+- **HashMap** — `O(1)` holdings lookup by ticker
+- **Heap** — `O(n log k)` top-N trades by P&L
+- **Binary Search** — `O(log n)` search by ticker or date
+
+### Quick Start
 
 ```bash
 git clone https://github.com/shevcodn/tradeledger
 cd tradeledger
-cp .env.example .env        # add your Alpha Vantage key
+cp .env.example .env
 pip install -r requirements.txt
 python main.py
 ```
 
-> Free API key: [alphavantage.co](https://www.alphavantage.co/support/#api-key)
+> **Free API key:** [alphavantage.co](https://www.alphavantage.co/support/#api-key)
 
-### Shared Price Cache
+### Try it live
 
-This project shares a price cache with [Stock Portfolio Tracker](https://github.com/shevcodn/projects):
-
-```
-projects/
-├── stock-tracker/
-├── tradeledger/
-└── shared/
-    └── price_cache.json    ← TTL 65 min, one API key
-```
-
----
-
-## Project Structure
-
-```
-tradeledger/
-├── main.py
-├── core/
-│   ├── transaction.py      # LinkedList
-│   ├── portfolio.py        # HashMap
-│   ├── sorting.py          # Heap (top trades)
-│   └── search.py           # Binary Search
-├── utils/
-│   ├── display.py          # Rich tables
-│   ├── chart.py            # ASCII chart
-│   ├── alerts.py           # Sliding window alerts
-│   └── price_api.py        # Alpha Vantage + shared cache
-└── data/
-    └── transactions.json
-```
+**[▶ shevcodn.dev/#project-02](https://shevcodn.dev/#project-02)** — interactive terminal, no install needed
 
 ---
 
@@ -120,7 +78,10 @@ tradeledger/
 
 *Project 02 of 7 · Built during p1→p1000 Python curriculum · Toronto 2026*
 
-[![Website](https://img.shields.io/badge/shevcodn.dev-00ff88?style=flat-square&logo=vercel&logoColor=black)](https://shevcodn.dev)
-[![All Projects](https://img.shields.io/badge/All_Projects-00ff88?style=flat-square&logo=github&logoColor=black)](https://github.com/shevcodn/projects)
+[![Website](https://img.shields.io/badge/Website-shevcodn.dev-00ff88?style=flat-square&logo=vercel&logoColor=black)](https://shevcodn.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-shevcodn-00ff88?style=flat-square&logo=github&logoColor=black)](https://github.com/shevcodn)
+[![GitLab](https://img.shields.io/badge/GitLab-shevcodn-00ff88?style=flat-square&logo=gitlab&logoColor=black)](https://gitlab.com/shevcodn)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-shevcodn-00ff88?style=flat-square&logo=linkedin&logoColor=black)](https://linkedin.com/in/shevcodn)
+[![LeetCode](https://img.shields.io/badge/LeetCode-shevcodn-00ff88?style=flat-square&logo=leetcode&logoColor=black)](https://leetcode.com/shevcodn)
 
 </div>
